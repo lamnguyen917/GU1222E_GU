@@ -1,0 +1,477 @@
+fileFormatVersion: 2
+guid: 442013b9c0d67aa49936116ffab62b73
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: JOBJ_1
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_28
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_23
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_30
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_25
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_31
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_26
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_2
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_3
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_20
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_21
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_12
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_4
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_13
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_5
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_15
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_7
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_17
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_9
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_32
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_27
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: JOBJ_22
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: model(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_0
+      parentName: model(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_1
+      parentName: JOBJ_0
+      position: {x: -0, y: 1.063063, z: -0.0448815}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_33
+      parentName: JOBJ_1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_28
+      parentName: JOBJ_1
+      position: {x: -0.0829643, y: -0.137006, z: 0.0351218}
+      rotation: {x: -0.006833172, y: 0.10082014, z: -0.08012627, w: 0.9916493}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: JOBJ_29
+      parentName: JOBJ_28
+      position: {x: 0.0065044006, y: -0.1983962, z: -0.0025935}
+      rotation: {x: 0.006833553, y: -0.10082001, z: 0.08012645, w: 0.9916493}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_30
+      parentName: JOBJ_29
+      position: {x: -0.025487399, y: -0.19686611, z: 0.0020602003}
+      rotation: {x: 0.011269004, y: -0.04217316, z: -0.03431233, w: 0.9984574}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_31
+      parentName: JOBJ_30
+      position: {x: -0.0084266, y: -0.4419789, z: -0.0505506}
+      rotation: {x: -0.08027196, y: 0.050654113, z: 0.09260799, w: 0.9911682}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_32
+      parentName: JOBJ_31
+      position: {x: -0.0130468, y: -0.065755, z: 0.0915185}
+      rotation: {x: 0.1434857, y: -0.003977337, z: -0.12673943, w: 0.9814954}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_2
+      parentName: JOBJ_1
+      position: {x: -0, y: 0.0097205, z: 0}
+      rotation: {x: -0.066445045, y: -0.004434762, z: -0.066445045, w: 0.9955654}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_3
+      parentName: JOBJ_2
+      position: {x: -0.018243201, y: 0.13606252, z: -0.0216057}
+      rotation: {x: 0.16295645, y: -0.0049683503, z: 0.16085105, w: 0.9734205}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_20
+      parentName: JOBJ_3
+      position: {x: 0.056374002, y: 0.28656632, z: -0.0058278004}
+      rotation: {x: -0.004413714, y: 0.00084785314, z: -0.004494281, w: 0.9999798}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_21
+      parentName: JOBJ_20
+      position: {x: 0.0200263, y: 0.10686311, z: 0.0087063005}
+      rotation: {x: 0.008555141, y: 0.0920976, z: 0.9914449, w: 0.09209741}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+    - name: JOBJ_22
+      parentName: JOBJ_21
+      position: {x: -0, y: 1.5989255, z: 0.0052993004}
+      rotation: {x: 0, y: 0, z: 1, w: 0.00000016292068}
+      scale: {x: 0.998, y: 0.998, z: 0.998}
+    - name: JOBJ_12
+      parentName: JOBJ_3
+      position: {x: -0.058622703, y: 0.17606482, z: -0.0453409}
+      rotation: {x: 0.94720197, y: -0.20821126, z: -0.12473783, w: 0.2095163}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999998}
+    - name: JOBJ_13
+      parentName: JOBJ_12
+      position: {x: -0.1217818, y: 0, z: 0}
+      rotation: {x: 0.4463303, y: 0.08685664, z: -0.16617386, w: 0.8750037}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_14
+      parentName: JOBJ_13
+      position: {x: -0.1253295, y: 0.0000001, z: 0}
+      rotation: {x: 0.9410817, y: -0.0014930506, z: -0.006391808, w: 0.33811578}
+      scale: {x: 0.99999994, y: 0.99999964, z: 0.99999964}
+    - name: JOBJ_15
+      parentName: JOBJ_14
+      position: {x: -0.1253188, y: -0.00018940002, z: 0.0016344001}
+      rotation: {x: 0.12998658, y: 0.0072744684, z: -0.00552153, w: 0.99147373}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_16
+      parentName: JOBJ_15
+      position: {x: -0.1317192, y: 0, z: 0}
+      rotation: {x: 0.9991736, y: 0, z: -0, w: 0.040647592}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: JOBJ_17
+      parentName: JOBJ_16
+      position: {x: -0.1317192, y: 0, z: 0}
+      rotation: {x: -0.5145602, y: -0.4357675, z: -0.47724417, w: 0.5635357}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_19
+      parentName: JOBJ_17
+      position: {x: -0.0748405, y: -0.0680646, z: 0.0063762004}
+      rotation: {x: 0.00015192782, y: -0.69741493, z: 0.32682046, w: 0.63780934}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: JOBJ_18
+      parentName: JOBJ_17
+      position: {x: -0.3062743, y: 0.7681291, z: 1.367193}
+      rotation: {x: 0.60656697, y: 0.5152541, z: -0.39815584, w: -0.45613778}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_4
+      parentName: JOBJ_3
+      position: {x: 0.120945506, y: 0.14074081, z: -0.045341104}
+      rotation: {x: -0.17721732, y: -0.08068075, z: 0.02584912, w: 0.98051846}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_5
+      parentName: JOBJ_4
+      position: {x: 0.12178001, y: -0.0000037000002, z: -0.0000002}
+      rotation: {x: 0.06992591, y: 0.13114214, z: -0.13402699, w: 0.9797699}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_6
+      parentName: JOBJ_5
+      position: {x: 0.12532881, y: -0.0000005, z: 0}
+      rotation: {x: 0.0019574987, y: 0, z: -0, w: 0.9999981}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: JOBJ_7
+      parentName: JOBJ_6
+      position: {x: 0.1253298, y: -0.0000005, z: 0}
+      rotation: {x: -0.7081401, y: -0.0047370493, z: 0.0027347691, w: 0.7060509}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: JOBJ_8
+      parentName: JOBJ_7
+      position: {x: 0.13171901, y: 0, z: 0.0000069000007}
+      rotation: {x: 0.0007475, y: 0, z: -0, w: 0.99999976}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_9
+      parentName: JOBJ_8
+      position: {x: 0.1317199, y: 0, z: -0.0000031}
+      rotation: {x: 0.7075516, y: -0.002756507, z: 0.0035553062, w: 0.70664746}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_11
+      parentName: JOBJ_9
+      position: {x: 0.100423604, y: -0.012940502, z: 0.0343144}
+      rotation: {x: 0.32554755, y: 0.36139476, z: 0.5657638, w: 0.6658258}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: JOBJ_10
+      parentName: JOBJ_9
+      position: {x: -0.7200089, y: -1.4256124, z: 0.0475287}
+      rotation: {x: -0.000042284006, y: 0.007362611, z: -0.008992336, w: 0.99993247}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_23
+      parentName: JOBJ_1
+      position: {x: 0.0829643, y: -0.13700591, z: 0.0351218}
+      rotation: {x: -0.53756964, y: 0.46761206, z: -0.46598873, w: 0.5246069}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: JOBJ_24
+      parentName: JOBJ_23
+      position: {x: 0.19851969, y: 0, z: 0.0000003}
+      rotation: {x: 0.002978996, y: 0, z: -0, w: 0.9999956}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_25
+      parentName: JOBJ_24
+      position: {x: 0.19851969, y: 0, z: -0.0000004}
+      rotation: {x: 0.996758, y: 0.075297296, z: -0.025812283, w: -0.011731254}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JOBJ_26
+      parentName: JOBJ_25
+      position: {x: 0.44494042, y: 0, z: 0.0000002}
+      rotation: {x: 0.81876904, y: 0.57408285, z: -0.0038986476, w: 0.0055605806}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: JOBJ_27
+      parentName: JOBJ_26
+      position: {x: 0.1134442, y: -0.0000001, z: -0.0000001}
+      rotation: {x: -0.0027909249, y: -0.00063348626, z: -0.22133406, w: 0.97519386}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Mesh_0
+      parentName: model(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mesh_1
+      parentName: model(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mesh_2
+      parentName: model(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mesh_3
+      parentName: model(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
