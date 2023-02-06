@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -6,12 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float speed = 10;
     [SerializeField] private float jumpSpeed = 10;
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private float climbingSpeed = 10;
 
-    private bool moveRight = true;
-    private int direction = 1;
-
-    private bool isJumping;
-    private float jumpTime;
+    private bool _isClimbable;
 
     // Start is called before the first frame update
     void Start()
@@ -21,69 +21,108 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // CheckJump();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
-        CheckJump();
-    }
-
-    void CheckJump()
-    {
-        if (isJumping)
-        {
-            if (jumpTime > 0)
-            {
-                jumpTime -= Time.deltaTime;
-            }
-            else
-            {
-                anim.SetBool("jump", false);
-                isJumping = false;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("PRESS JUMP DOWN");
-            Jump();
-        }
-    }
-
-    void Jump()
-    {
-        anim.SetBool("jump", true);
-        jumpTime = 1;
-        isJumping = true;
     }
 
     void Move()
     {
         Vector3 position = transform.position;
-        if (direction == 1 && position.x > 10)
+        var x = Input.GetAxis("Horizontal");
+        var y = Input.GetAxis("Vertical");
+
+        if (x > 0)
         {
-            SetDirection(-1);
+            playerSprite.flipX = false;
         }
 
-        if (direction == -1 && position.x < -4)
+        if (x < 0)
         {
-            SetDirection(1);
+            playerSprite.flipX = true;
         }
 
-        // if (!isJumping && position.y > -0.355)
-        // {
-        //     position.y -= Time.deltaTime;
-        // }
-
-        if (isJumping)
+        Debug.Log($"_isClimbable && x * y == 0 {_isClimbable && x * y == 0}, {_isClimbable} {x * y == 0}");
+        if (_isClimbable && x == 0 && y == 0)
         {
-            position.y += jumpSpeed * Time.deltaTime;
+            anim.speed = 0;
+        }
+        else
+        {
+            anim.speed = 1;
         }
 
-        position.x += direction * speed * Time.deltaTime;
-        transform.position = position;
+        if (_isClimbable && Mathf.Abs(y) > 0)
+        {
+            rigidbody2D.velocity = new Vector2(0, y * climbingSpeed);
+        }
+
+        anim.SetFloat("run", Mathf.Abs(x));
+
+        Vector2 moveVector = new Vector2();
+        moveVector.x = x * speed;
+
+        if (Input.GetAxis("Jump") > 0)
+        {
+            moveVector.y = jumpSpeed;
+        }
+
+        rigidbody2D.AddForce(moveVector);
     }
 
-    private void SetDirection(int dir)
+    void Die()
     {
-        direction = dir;
-        playerSprite.flipX = dir == -1;
+        anim.SetBool("die", true);
     }
+
+    // private void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     Debug.Log($"ENTER {col.gameObject.name}");
+    // }
+    //
+    // private void OnCollisionExit2D(Collision2D other)
+    // {
+    //     Debug.Log($"EXIT {other.gameObject.name}");
+    // }
+    //
+    // private void OnCollisionStay2D(Collision2D collision)
+    // {
+    //     Debug.Log($"STAY {collision.gameObject.name}");
+    // }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("DeadTouch"))
+        {
+            Die();
+        }
+
+        Debug.Log($"ENTER {col.tag} ===== {col.CompareTag("Climbable")}");
+        if (col.CompareTag("Climbable"))
+        {
+            _isClimbable = true;
+            rigidbody2D.gravityScale = 0;
+            anim.SetBool("climbing", true);
+            Debug.Log(_isClimbable + "<<<<<<<<<<<<<<<<<d");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        Debug.Log($"EXIT {col.tag} ===== {col.CompareTag("Climbable")}");
+        if (col.CompareTag("Climbable"))
+        {
+            _isClimbable = false;
+            Debug.Log(_isClimbable + "<<<<<<<<<<<<<<<<<d");
+            rigidbody2D.gravityScale = 1;
+            anim.SetBool("climbing", false);
+        }
+    }
+
+    // private void OnTriggerStay2D(Collider2D col)
+    // {
+    // }
 }
