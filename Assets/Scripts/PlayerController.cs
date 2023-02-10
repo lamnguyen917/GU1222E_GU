@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,28 +11,49 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpSpeed = 10;
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private float climbingSpeed = 10;
+    [SerializeField] private TMP_Text info;
 
     private bool _isClimbable;
+    [SerializeField] private bool _isJumping;
+
+    [SerializeField] private LayerMask groundLayers;
+    [SerializeField] private Transform groundCheck;
+
+    [SerializeField] private GameObject bulletPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        info = gameManager.text;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // CheckJump();
+        if (_isJumping) CheckGround();
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            info.enabled = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            info.enabled = true;
+        }
     }
 
     private void FixedUpdate()
     {
         Move();
+        if (Input.GetMouseButtonDown(1))
+        {
+            Gun();
+        }
     }
 
     void Move()
     {
-        Vector3 position = transform.position;
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
 
@@ -45,7 +67,6 @@ public class PlayerController : MonoBehaviour
             playerSprite.flipX = true;
         }
 
-        Debug.Log($"_isClimbable && x * y == 0 {_isClimbable && x * y == 0}, {_isClimbable} {x * y == 0}");
         if (_isClimbable && x == 0 && y == 0)
         {
             anim.speed = 0;
@@ -61,37 +82,23 @@ public class PlayerController : MonoBehaviour
         }
 
         anim.SetFloat("run", Mathf.Abs(x));
-
         Vector2 moveVector = new Vector2();
         moveVector.x = x * speed;
-
-        if (Input.GetAxis("Jump") > 0)
-        {
-            moveVector.y = jumpSpeed;
-        }
-
         rigidbody2D.AddForce(moveVector);
+
+
+        if (Input.GetAxis("Jump") > 0 && !_isJumping)
+        {
+            anim.SetBool("jump", true);
+            rigidbody2D.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+            _isJumping = true;
+        }
     }
 
     void Die()
     {
         anim.SetBool("die", true);
     }
-
-    // private void OnCollisionEnter2D(Collision2D col)
-    // {
-    //     Debug.Log($"ENTER {col.gameObject.name}");
-    // }
-    //
-    // private void OnCollisionExit2D(Collision2D other)
-    // {
-    //     Debug.Log($"EXIT {other.gameObject.name}");
-    // }
-    //
-    // private void OnCollisionStay2D(Collision2D collision)
-    // {
-    //     Debug.Log($"STAY {collision.gameObject.name}");
-    // }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -106,7 +113,6 @@ public class PlayerController : MonoBehaviour
             _isClimbable = true;
             rigidbody2D.gravityScale = 0;
             anim.SetBool("climbing", true);
-            Debug.Log(_isClimbable + "<<<<<<<<<<<<<<<<<d");
         }
     }
 
@@ -116,13 +122,32 @@ public class PlayerController : MonoBehaviour
         if (col.CompareTag("Climbable"))
         {
             _isClimbable = false;
-            Debug.Log(_isClimbable + "<<<<<<<<<<<<<<<<<d");
             rigidbody2D.gravityScale = 1;
             anim.SetBool("climbing", false);
         }
     }
 
-    // private void OnTriggerStay2D(Collider2D col)
-    // {
-    // }
+    private void CheckGround()
+    {
+        var hit = Physics2D.Raycast(groundCheck.position, Vector2.down, Mathf.Infinity, groundLayers);
+        Debug.Log(hit);
+        if (hit.distance < 0.14)
+        {
+            info.text = hit.transform.name;
+            _isJumping = false;
+            anim.SetBool("jump", false);
+        }
+    }
+
+    private void Gun()
+    {
+        var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.down) * 5;
+        Gizmos.DrawRay(groundCheck.position, direction);
+    }
 }
