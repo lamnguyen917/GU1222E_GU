@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpSpeed = 10;
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private float climbingSpeed = 10;
-    [SerializeField] private TMP_Text info;
 
     private bool _isClimbable;
     [SerializeField] private bool _isJumping;
@@ -25,22 +24,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         GameManager gameManager = FindObjectOfType<GameManager>();
-        info = gameManager.text;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (_isJumping) CheckGround();
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            info.enabled = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            info.enabled = true;
-        }
     }
 
     private void FixedUpdate()
@@ -89,15 +78,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxis("Jump") > 0 && !_isJumping)
         {
-            anim.SetBool("jump", true);
+            anim.SetBool("isJump", true);
             rigidbody2D.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             _isJumping = true;
+        }
+
+        if (_isJumping)
+        {
+            anim.SetFloat("jump", rigidbody2D.velocity.y);
         }
     }
 
     void Die()
     {
-        anim.SetBool("die", true);
+        anim.SetTrigger("die");
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -107,7 +101,6 @@ public class PlayerController : MonoBehaviour
             Die();
         }
 
-        Debug.Log($"ENTER {col.tag} ===== {col.CompareTag("Climbable")}");
         if (col.CompareTag("Climbable"))
         {
             _isClimbable = true;
@@ -133,9 +126,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log(hit);
         if (hit.distance < 0.14)
         {
-            info.text = hit.transform.name;
             _isJumping = false;
-            anim.SetBool("jump", false);
+            anim.SetBool("isJump", false);
         }
     }
 
