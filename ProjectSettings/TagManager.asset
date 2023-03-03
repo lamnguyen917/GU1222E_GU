@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DeadTouch
   - Climbable
+  - Bullet
+  - Treasure
   layers:
   - Default
   - TransparentFX

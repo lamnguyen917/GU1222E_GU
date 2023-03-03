@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,19 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
 
-    // Start is called before the first frame update
+    [SerializeField] private AudioSource sound;
+    [SerializeField] private AudioSource gunSound;
+
+    [SerializeField] private AudioClip runSfx;
+    [SerializeField] private AudioClip jumpSfx;
+    [SerializeField] private AudioClip gunSfx;
+
+    [SerializeField] private float fireRate = 0.5f;
+
+    private float fireTimer = 0;
+
+    [SerializeField] private Transform bulletSpawnPosition;
+
     void Start()
     {
         GameManager gameManager = FindObjectOfType<GameManager>();
@@ -30,12 +43,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (_isJumping) CheckGround();
+        fireTimer -= Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         Move();
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetAxis("Fire1") > 0)
         {
             Gun();
         }
@@ -46,15 +60,19 @@ public class PlayerController : MonoBehaviour
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
 
-        if (x > 0)
-        {
-            playerSprite.flipX = false;
-        }
-
-        if (x < 0)
-        {
-            playerSprite.flipX = true;
-        }
+        // if (x > 0)
+        // {
+        //     playerSprite.flipX = false;
+        // }
+        //
+        // if (x < 0)
+        // {
+        //     playerSprite.flipX = true;
+        // }
+        Vector3 scale = transform.localScale;
+        if (x > 0) scale.x = 1;
+        if (x < 0) scale.x = -1;
+        transform.localScale = scale;
 
         if (_isClimbable && x == 0 && y == 0)
         {
@@ -81,12 +99,41 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isJump", true);
             rigidbody2D.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             _isJumping = true;
+            PlaySfx(jumpSfx, false);
         }
 
         if (_isJumping)
         {
             anim.SetFloat("jump", rigidbody2D.velocity.y);
         }
+
+        CheckRunSound(Mathf.Abs(x) > 0.1f);
+    }
+
+    void CheckRunSound(bool isRunning)
+    {
+        if (_isJumping) return;
+        if (!isRunning)
+        {
+            StopSfx();
+        }
+        else
+        {
+            PlaySfx(runSfx);
+        }
+    }
+
+    void StopSfx()
+    {
+        sound.Stop();
+    }
+
+    void PlaySfx(AudioClip clip, bool loop = true)
+    {
+        if (sound.clip == clip && sound.isPlaying) return;
+        sound.loop = loop;
+        sound.clip = clip;
+        sound.Play();
     }
 
     void Die()
@@ -106,6 +153,12 @@ public class PlayerController : MonoBehaviour
             _isClimbable = true;
             rigidbody2D.gravityScale = 0;
             anim.SetBool("climbing", true);
+        }
+
+        if (col.CompareTag("Treasure"))
+        {
+            Treasure treasure = col.gameObject.GetComponent<Treasure>();
+            treasure.Open();
         }
     }
 
@@ -133,7 +186,12 @@ public class PlayerController : MonoBehaviour
 
     private void Gun()
     {
-        var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        if (fireTimer > 0) return;
+        fireTimer = fireRate;
+        var bulletObject = Instantiate(bulletPrefab, bulletSpawnPosition.position, Quaternion.identity);
+        Bullet bullet = bulletObject.GetComponent<Bullet>();
+        bullet.forward = -transform.localScale.x;
+        gunSound.Play();
     }
 
     private void OnDrawGizmos()
