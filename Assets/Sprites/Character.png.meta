@@ -536,6 +536,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Character_20
+      rect:
+        serializedVersion: 2
+        x: 2173
+        y: 1475
+        width: 204
+        height: 232
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df714381aea46f8489e86d08c1c377ba
+      internalID: -230520993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_21
+      rect:
+        serializedVersion: 2
+        x: 2429
+        y: 1485
+        width: 204
+        height: 232
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f8e30be2a4967449a757f839a1c8146
+      internalID: 1234260306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_22
+      rect:
+        serializedVersion: 2
+        x: 2678
+        y: 1485
+        width: 204
+        height: 232
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f95f91465767fdb42be81dfc15b5e8d9
+      internalID: 1093170493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_23
+      rect:
+        serializedVersion: 2
+        x: 2949
+        y: 1487
+        width: 204
+        height: 232
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef5295e99df52f4fbf36cba0a5215a3
+      internalID: 817272102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -552,17 +636,21 @@ TextureImporter:
       Character_17: 155681412
       Character_7: -1740755019
       Character_10: 1178931906
+      Character_21: 1234260306
       Character_1: -814190064
       Character_6: -1111014068
       Character_12: 1730458341
       Character_8: -1815433283
       Character_3: 1434148589
+      Character_23: 817272102
       Character_14: -2050119314
       Character_13: -811723104
       Character_0: 1692527621
       Character_16: 152642019
+      Character_22: 1093170493
       Character_9: -2053830348
       Character_2: -124844242
+      Character_20: -230520993
       Character_18: 1839619628
       Character_11: 1660505240
       Character_4: -1351858973

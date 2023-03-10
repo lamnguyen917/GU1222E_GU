@@ -1,6 +1,3 @@
-using System;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float speed = 10;
     [SerializeField] private float jumpSpeed = 10;
-    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Rigidbody2D rg2d;
     [SerializeField] private float climbingSpeed = 10;
 
     private bool _isClimbable;
@@ -34,9 +31,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform bulletSpawnPosition;
 
+    [SerializeField] private int exp;
+    [SerializeField] private int level;
+
     void Start()
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
+        LoadDefaultData();
+        GameManager.Instance.TestFunctionFromGameObject();
+        Debug.Log(DataManager.Instance.Gold);
     }
 
     // Update is called once per frame
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_isJumping) CheckGround();
         fireTimer -= Time.deltaTime;
+
+        Debug.DrawRay(transform.position, Vector3.down * 10, Color.green);
     }
 
     private void FixedUpdate()
@@ -55,20 +59,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void LoadDefaultData()
+    {
+        var data = LevelManager.Instance.data;
+        transform.position = data.playerPosition;
+        bulletPrefab = data.defaultBullet;
+        exp = PlayerPrefs.GetInt("exp", 0);
+        level = PlayerPrefs.GetInt("level", 0);
+        GameManager.Instance.UpdatePlayerState(exp, level);
+    }
+
     void Move()
     {
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
 
-        // if (x > 0)
-        // {
-        //     playerSprite.flipX = false;
-        // }
-        //
-        // if (x < 0)
-        // {
-        //     playerSprite.flipX = true;
-        // }
         Vector3 scale = transform.localScale;
         if (x > 0) scale.x = 1;
         if (x < 0) scale.x = -1;
@@ -85,26 +90,26 @@ public class PlayerController : MonoBehaviour
 
         if (_isClimbable && Mathf.Abs(y) > 0)
         {
-            rigidbody2D.velocity = new Vector2(0, y * climbingSpeed);
+            rg2d.velocity = new Vector2(0, y * climbingSpeed);
         }
 
         anim.SetFloat("run", Mathf.Abs(x));
         Vector2 moveVector = new Vector2();
         moveVector.x = x * speed;
-        rigidbody2D.AddForce(moveVector);
+        rg2d.AddForce(moveVector);
 
 
         if (Input.GetAxis("Jump") > 0 && !_isJumping)
         {
             anim.SetBool("isJump", true);
-            rigidbody2D.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+            rg2d.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             _isJumping = true;
             PlaySfx(jumpSfx, false);
         }
 
         if (_isJumping)
         {
-            anim.SetFloat("jump", rigidbody2D.velocity.y);
+            anim.SetFloat("jump", rg2d.velocity.y);
         }
 
         CheckRunSound(Mathf.Abs(x) > 0.1f);
@@ -139,6 +144,7 @@ public class PlayerController : MonoBehaviour
     void Die()
     {
         anim.SetTrigger("die");
+        NewEventDispatcher.Instance.PostEEvent(EventType.PlayerDie);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -151,7 +157,7 @@ public class PlayerController : MonoBehaviour
         if (col.CompareTag("Climbable"))
         {
             _isClimbable = true;
-            rigidbody2D.gravityScale = 0;
+            rg2d.gravityScale = 0;
             anim.SetBool("climbing", true);
         }
 
@@ -168,7 +174,7 @@ public class PlayerController : MonoBehaviour
         if (col.CompareTag("Climbable"))
         {
             _isClimbable = false;
-            rigidbody2D.gravityScale = 1;
+            rg2d.gravityScale = 1;
             anim.SetBool("climbing", false);
         }
     }
@@ -194,10 +200,18 @@ public class PlayerController : MonoBehaviour
         gunSound.Play();
     }
 
-    private void OnDrawGizmos()
+    public void GainExp(int amount)
     {
-        Gizmos.color = Color.red;
-        Vector3 direction = transform.TransformDirection(Vector3.down) * 5;
-        Gizmos.DrawRay(groundCheck.position, direction);
+        exp += amount;
+        if (exp > 100) LevelUp();
+        GameManager.Instance.UpdatePlayerState(exp, level);
+        PlayerPrefs.SetInt("exp", exp);
+        PlayerPrefs.SetInt("level", level);
+    }
+
+    void LevelUp()
+    {
+        exp -= 100;
+        level += 1;
     }
 }

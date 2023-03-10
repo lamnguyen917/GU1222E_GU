@@ -7,5 +7,6 @@ public class Treasure : MonoBehaviour
     public void Open()
     {
         particleObject.SetActive(true);
+        PlayerPrefs.SetFloat("open_treasure", Time.time);
     }
 }

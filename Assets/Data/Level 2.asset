@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492b9c81040e54d4abd5eb0dfc50a585, type: 3}
+  m_Name: Level 2
+  m_EditorClassIdentifier: 
+  id: 2
+  levelName: Level_14.22108
+  playerPosition: {x: -8.039, y: 0.818, z: 0}
+  defaultBullet: {fileID: 1676901647880921937, guid: 46d89f66ca55f944fa292e733690249e, type: 3}
+  enemyPrefab: {fileID: 7861723577083174122, guid: 06d3076252a2f62459a77f7edce7fe8d, type: 3}
+  spawnPosition: {x: -3.67, y: 1, z: 0}
+  spawnRate: 1

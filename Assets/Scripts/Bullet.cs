@@ -12,11 +12,15 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        CheckDestroy();
+    }
+
+    protected void CheckDestroy()
+    {
         timer -= Time.deltaTime;
         if (timer < 0) Destroy(gameObject);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         rb.AddForce(Vector2.left * forward * speed);
