@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
         {
             Gun();
         }
+
+        if (Input.GetAxis("Fire2") > 0)
+        {
+            ShootDirect();
+        }
     }
 
     void LoadDefaultData()
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
         var data = LevelManager.Instance.data;
         transform.position = data.playerPosition;
         bulletPrefab = data.defaultBullet;
+        bulletPrefab.SetActive(false);
         exp = PlayerPrefs.GetInt("exp", 0);
         level = PlayerPrefs.GetInt("level", 0);
         GameManager.Instance.UpdatePlayerState(exp, level);
@@ -197,6 +203,29 @@ public class PlayerController : MonoBehaviour
         var bulletObject = Instantiate(bulletPrefab, bulletSpawnPosition.position, Quaternion.identity);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.forward = -transform.localScale.x;
+        bulletObject.SetActive(true);
+        gunSound.Play();
+    }
+
+    public void ShootDirect()
+    {
+        if (fireTimer > 0) return;
+        fireTimer = fireRate;
+        var bulletObject = Instantiate(bulletPrefab, bulletSpawnPosition.position, Quaternion.identity);
+        Bullet bullet = bulletObject.GetComponent<Bullet>();
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+        if (bullet is ProjectileBullet)
+        {
+            var projectile = bullet as ProjectileBullet;
+            projectile.SetStartDirection((mousePosition - bulletSpawnPosition.position).normalized);
+        }
+        else
+        {
+            bullet.SetDirection((mousePosition - bulletSpawnPosition.position).normalized);
+        }
+
+        bulletObject.SetActive(true);
         gunSound.Play();
     }
 
