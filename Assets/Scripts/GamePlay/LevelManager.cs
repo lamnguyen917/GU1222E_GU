@@ -11,9 +11,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject check;
     private float _timer;
 
+    [SerializeField] private LevelData[] levels;
+    
+    public static int LevelIndex = 0;
+    
     private void Awake()
     {
         Instance = this;
+        data = levels[LevelIndex];
     }
 
     void Start()

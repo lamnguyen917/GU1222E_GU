@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text lastAction;
     [SerializeField] private GameObject lastKill;
 
+    private Transform tr;
+
     private void Awake()
     {
         Instance = this;
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
         lastAction.text = PlayerPrefs.GetString("last_action", "");
         var lastPosString = PlayerPrefs.GetString("last_kill_position", "{}");
         lastKill.transform.position = JsonUtility.FromJson<Vector3>(lastPosString);
-        
+
         NewEventDispatcher.Instance.AddEventLister(EventType.PlayerDie, GameOver);
     }
 

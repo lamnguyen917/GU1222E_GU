@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Home : MonoBehaviour
 {
     private AsyncOperation loader;
+
+    [SerializeField] private TMP_Text levelText;
 
     public void StartGame()
     {
@@ -31,4 +34,10 @@ public class Home : MonoBehaviour
     //         yield return null;
     //     }
     // }
+
+    public void SetLevel(int level)
+    {
+        LevelManager.LevelIndex = level;
+        levelText.text = $"Level {level + 1}";
+    }
 }

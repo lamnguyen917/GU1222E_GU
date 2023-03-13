@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -18,5 +19,10 @@ public class MenuManager : MonoBehaviour
     public void ShowGameOverMenu()
     {
         Debug.Log("Hiển thị menu kết thúc game");
+    }
+
+    public void BackToMain()
+    {
+        SceneManager.LoadScene("0-Menu");
     }
 }
